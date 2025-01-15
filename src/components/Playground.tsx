@@ -106,7 +106,6 @@ const Playground = ({ grid_size }: PlaygroundProps) => {
 
     return (
         <>
-            {won && <ConfettiExplosion width={3000} height={2000} particleCount={150} />}
             <div className="flex flex-col justify-center items-center min-h-screen container mx-auto p-4">
                 <div className={`grid gap-3`}
                     style={{
@@ -150,6 +149,7 @@ const Playground = ({ grid_size }: PlaygroundProps) => {
                     </Button>
                 </div>
             </div>
+            {won && <ConfettiExplosion width={3000} height={2000} particleCount={150} />}
         </>
     )
 }
