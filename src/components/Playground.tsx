@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
-import ConfettiExplosion from "react-confetti-explosion";
 
 interface PlaygroundProps {
     grid_size: number,
@@ -105,52 +104,49 @@ const Playground = ({ grid_size }: PlaygroundProps) => {
     console.log(arr)
 
     return (
-        <>
-            <div className="flex flex-col justify-center items-center min-h-screen container mx-auto p-4">
-                <div className={`grid gap-3`}
-                    style={{
-                        gridTemplateColumns: `repeat(${grid_size},minmax(0,1fr))`,
-                        width: `min(100%,${grid_size * 6}rem)`
-                    }}>
-                    {
-                        arr.map((card) =>
-                            <div
-                                className={`flex justify-center items-center tracking-widest aspect-square rounded-lg font-semibold cursor-pointer select-none text-lg transition-all dark:text-gray-700
+        <div className="flex flex-col justify-center items-center min-h-screen container mx-auto p-4">
+            <div className={`grid gap-3`}
+                style={{
+                    gridTemplateColumns: `repeat(${grid_size},minmax(0,1fr))`,
+                    width: `min(100%,${grid_size * 6}rem)`
+                }}>
+                {
+                    arr.map((card) =>
+                        <div
+                            className={`flex justify-center items-center tracking-widest aspect-square rounded-lg font-semibold cursor-pointer select-none text-lg transition-all dark:text-gray-700
                                     ${isFlipped(card.id) ?
-                                        (isSolved(card.id) ?
-                                            "bg-green-600 text-white dark:text-white" :
-                                            "bg-blue-600 text-white dark:text-white")
-                                        : "bg-muted-foreground"
-                                    }`}
-                                onClick={() => handleClick(card.id)}
-                                key={card.id}
-                            >
-                                {isFlipped(card.id) ? card.number : "?"}
-                            </div>
-                        )
-                    }
-                </div>
-
-                <div className="mt-12 flex flex-col justify-center items-center gap-5">
-                    {
-                        won &&
-                        <div className="text-2xl font-bold tracking-tight text-green-600 animate-bounce">
-                            Hurray You Have Won the Game
+                                    (isSolved(card.id) ?
+                                        "bg-green-600 text-white dark:text-white" :
+                                        "bg-blue-600 text-white dark:text-white")
+                                    : "bg-muted-foreground"
+                                }`}
+                            onClick={() => handleClick(card.id)}
+                            key={card.id}
+                        >
+                            {isFlipped(card.id) ? card.number : "?"}
                         </div>
-                    }
-                    <Button
-                        ref={(e) => ref.current[0] = e}
-                        size={"lg"}
-                        className="bg-red-600 hover:bg-red-700 transition-colors duration-300"
-                        onClick={initializeGame}>
-                        {
-                            won ? "Play Again" : "Reset Game"
-                        }
-                    </Button>
-                </div>
+                    )
+                }
             </div>
-            {won && <ConfettiExplosion width={3000} height={2000} particleCount={150} />}
-        </>
+
+            <div className="mt-12 flex flex-col justify-center items-center gap-5">
+                {
+                    won &&
+                    <div className="text-2xl font-bold tracking-tight text-green-600 animate-bounce">
+                        Hurray You Have Won the Game
+                    </div>
+                }
+                <Button
+                    ref={(e) => ref.current[0] = e}
+                    size={"lg"}
+                    className="bg-red-600 hover:bg-red-700 transition-colors duration-300"
+                    onClick={initializeGame}>
+                    {
+                        won ? "Play Again" : "Reset Game"
+                    }
+                </Button>
+            </div>
+        </div>
     )
 }
 
