@@ -11,6 +11,8 @@ const Header = ({ grid }: Props) => {
     const { theme, setTheme } = useTheme()
     const isDark = theme === "dark";
 
+    let max_grid = 8;
+
     return (
         <header className="sticky top-0 z-50 w-full border-b backdrop-blur bg-background/95 py-2 supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto h-16 flex justify-between items-center px-4">
@@ -24,13 +26,13 @@ const Header = ({ grid }: Props) => {
                 <div className="flex flex-col md:flex-row items-center justify-center gap-x-4 gap-y-2">
                     <div className="flex md:flex-col justify-center items-center gap-1">
                         <label htmlFor="grid" className="font-medium">Grid Size</label>
-                        <span className="text-xs">( Max 10 )</span>
+                        <span className="text-xs">( Max {max_grid} )</span>
                     </div>
                     <InputNumber
                         size="middle"
                         variant="outlined"
                         min={2}
-                        max={10}
+                        max={max_grid}
                         defaultValue={2}
                         onChange={(e) => e && grid(e)}
                     />

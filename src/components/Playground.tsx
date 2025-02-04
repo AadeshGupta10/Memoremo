@@ -113,7 +113,7 @@ const Playground = ({ grid_size }: PlaygroundProps) => {
                 {
                     arr.map((card) =>
                         <div
-                            className={`flex justify-center items-center tracking-widest aspect-square rounded-lg font-semibold cursor-pointer select-none text-lg transition-all dark:text-gray-700
+                            className={`flex justify-center items-center tracking-widest aspect-square rounded-lg font-semibold cursor-pointer select-none md:text-lg transition-all dark:text-gray-700
                                     ${isFlipped(card.id) ?
                                     (isSolved(card.id) ?
                                         "bg-green-600 text-white dark:text-white" :
