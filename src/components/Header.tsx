@@ -11,7 +11,7 @@ const Header = ({ grid }: Props) => {
     const { theme, setTheme } = useTheme()
     const isDark = theme === "dark";
 
-    let max_grid = 8;
+    let max_grid = 10;
 
     return (
         <header className="sticky top-0 z-50 w-full border-b backdrop-blur bg-background/95 py-2 supports-[backdrop-filter]:bg-background/60">
